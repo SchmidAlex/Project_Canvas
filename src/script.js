@@ -35,6 +35,20 @@ window.addEventListener('DOMContentLoaded', function(e) {
             //planet.setOnHold();
         });
 
+        document.getElementById('myCanvas').addEventListener('mousedown', function (e) {
+            planets.forEach(planet => {
+                console.log('test');
+                planet.setOnHold();
+            });
+        });
+    
+        document.getElementById('myCanvas').addEventListener('mouseup', function (e) {
+            planets.forEach(planet => {
+                console.log('test');
+                planet.breakOnHold();
+            });
+        });
+
         //Start the animation
         showFrame(canvas, ctx, sun, planets, stars, starColor, actualTime, asteroid, shootingStar);
     });
