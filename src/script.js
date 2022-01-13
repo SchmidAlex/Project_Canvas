@@ -14,12 +14,15 @@ window.addEventListener('DOMContentLoaded', function(e) {
         var shootingStarSize = 5;
         var shootingStarColor = '#fff';
         var shootingStarLivingTime = 150;
+        var supernovaSize = 15;
+        var supernovaColor = '#ff0000';
         /** @type {HTMLCanvasElement} */
         let canvas = document.getElementById('myCanvas');
         let ctx = canvas.getContext('2d');
         var sun = new Sun(20, canvas); //size anpassen
         var asteroid = new Asteroid(asteroidSize, 10, canvas, asteroidColor);
-        var shootingStar = new ShootingStar(shootingStarSize, 10, shootingStarColor, canvas, shootingStarLivingTime)
+        var shootingStar = new ShootingStar(shootingStarSize, 10, shootingStarColor, canvas, shootingStarLivingTime);
+        var supernova = new Supernova(supernovaSize, supernovaColor, canvas);
         /**
          * Create objects we need
          */
@@ -51,13 +54,13 @@ window.addEventListener('DOMContentLoaded', function(e) {
         });
 
         //Start the animation
-        showFrame(canvas, ctx, sun, planets, stars, starColor, actualTime, asteroid, shootingStar);
+        showFrame(canvas, ctx, sun, planets, stars, starColor, actualTime, asteroid, shootingStar, supernova);
     });
     
 });
  
 
-function showFrame(canvas, ctx, sun, planets, stars, starColor, actualTime, asteroid, shootingStar) {
+function showFrame(canvas, ctx, sun, planets, stars, starColor, actualTime, asteroid, shootingStar, supernova) {
 
     ctx.clearRect(0, 0, canvas.width, canvas.height);
 
@@ -71,12 +74,14 @@ function showFrame(canvas, ctx, sun, planets, stars, starColor, actualTime, aste
 
     shootingStar.draw(ctx);
 
+    supernova.draw(ctx);
+
     planets.forEach(planet => {
         planet.draw(ctx);
     });
 
 
     window.requestAnimationFrame(function(actualTime) {
-        showFrame(canvas, ctx, sun, planets, stars, starColor, actualTime, asteroid, shootingStar);
+        showFrame(canvas, ctx, sun, planets, stars, starColor, actualTime, asteroid, shootingStar, supernova);
     });
 }

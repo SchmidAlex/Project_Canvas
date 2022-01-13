@@ -4,7 +4,7 @@ class ShootingStar {
       this.velocity = velocity;
       this.color = color;
       this.x = Math.floor(Math.random() * canvas.width);
-      this.y = Math.floor(Math.random() * canvas.width);
+      this.y = Math.floor(Math.random() * canvas.height);
       //maybe a direction or something?
       this.ticker = 0;
       this.livingTime = livingTime;

@@ -11,15 +11,15 @@ class Asteroid {
           break;
         case 1:
           this.x = 0;
-          this.y = Math.floor(Math.random() * canvas.width);
+          this.y = Math.floor(Math.random() * canvas.height);
           break;
         case 2:
           this.x = canvas.width
-          this.y = Math.floor(Math.random() * canvas.width);
+          this.y = Math.floor(Math.random() * canvas.height);
           break;
         case 3:
           this.x = Math.floor(Math.random() * canvas.width);
-          this.y = canvas.width;
+          this.y = canvas.height;
           break;
       }
     }
