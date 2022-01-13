@@ -12,8 +12,10 @@ class Planet {
     }
 
     draw(ctx) {
-      if (this.interreactionVelocity > 0) {
+      if (this.interreactionVelocity > 0 && this.interreactionVelocity > this.currentVelocity) {
         this.currentVelocity = this.currentVelocity * 1.5;
+      }else if(this.interreactionVelocity > 0 && this.interreactionVelocity < this.currentVelocity){
+        this.currentVelocity = this.currentVelocity / 1.5;
       }
       ctx.beginPath();
       ctx.fillStyle = this.color;
