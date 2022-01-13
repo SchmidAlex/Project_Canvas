@@ -6,7 +6,9 @@ class Sun {
 
     draw(ctx, canvas) {
       ctx.fillStyle = this.color;
+      ctx.beginPath();
       ctx.arc(canvas.width / 2, canvas.height / 2, this.sizeRadius, 0, 2 * Math.PI, false);
       ctx.fill();
+      ctx.closePath();
     }
   }
