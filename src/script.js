@@ -37,14 +37,12 @@ window.addEventListener('DOMContentLoaded', function(e) {
 
         document.getElementById('myCanvas').addEventListener('mousedown', function (e) {
             planets.forEach(planet => {
-                console.log('test');
                 planet.setOnHold();
             });
         });
     
         document.getElementById('myCanvas').addEventListener('mouseup', function (e) {
             planets.forEach(planet => {
-                console.log('test');
                 planet.breakOnHold();
             });
         });

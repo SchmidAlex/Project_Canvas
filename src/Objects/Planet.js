@@ -13,7 +13,7 @@ class Planet {
     }
 
     draw(ctx) {
-      this.speedUpAndSlowDown(1, 10);
+      this.speedUpAndSlowDown(1, 1/**+ 10 */);
       ctx.beginPath();
       ctx.fillStyle = this.color;
       ctx.arc((this.x - this.distanceRadius) + Math.sin(this.winkel * Math.PI) * this.distanceRadius, this.y + Math.cos(this.winkel * Math.PI) * this.distanceRadius, this.sizeRadius, 0, 2 * Math.PI, false);
@@ -31,7 +31,7 @@ class Planet {
     }
 
     speedUpAndSlowDown(actualActionTime, setActionTime){
-      if (actualActionTime >= setActionTime) {
+      if (actualActionTime > setActionTime) {
         if (this.interreactionVelocity > 0) {
           this.currentVelocity = this.defaultVelocity * this.interreactionVelocity;
         } else if (this.onHold) {
@@ -44,6 +44,8 @@ class Planet {
           this.currentVelocity = this.currentVelocity / 1.01 + this.interreactionVelocity;
         } else if (this.interreactionVelocity === 0 && this.onHold) {
           this.currentVelocity = this.currentVelocity / 1.01;
+        } else if (this.currentVelocity < this.defaultVelocity && this.interreactionVelocity === 0 && !this.onHold) {
+          this.currentVelocity = this.currentVelocity * 1.01;
         }
       }
     }
