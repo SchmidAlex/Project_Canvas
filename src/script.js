@@ -13,12 +13,13 @@ window.addEventListener('DOMContentLoaded', function(e) {
         var asteroidColor = "#964B00";
         var shootingStarSize = 5;
         var shootingStarColor = '#fff';
+        var shootingStarLivingTime = 150;
         /** @type {HTMLCanvasElement} */
         let canvas = document.getElementById('myCanvas');
         let ctx = canvas.getContext('2d');
         var sun = new Sun(20, canvas); //size anpassen
         var asteroid = new Asteroid(asteroidSize, 10, canvas, asteroidColor);
-        var shootingStar = new ShootingStar(shootingStarSize, 10, shootingStarColor)
+        var shootingStar = new ShootingStar(shootingStarSize, 10, shootingStarColor, canvas, shootingStarLivingTime)
         /**
          * Create objects we need
          */
