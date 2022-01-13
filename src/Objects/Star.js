@@ -19,7 +19,7 @@ class Star {
         this.yPosition = yPos;
         this.starSize = starSize;
     }
-
+    //comment
     draw(ctx, starColor) {
         ctx.beginPath();
         ctx.fillStyle = starColor;
