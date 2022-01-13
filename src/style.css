@@ -4,8 +4,8 @@
 }
 
 .container{
-    height: 550px;
-    width: 900px;
+    height: 750px;
+    width: 750px;
     text-align: center;
     margin: 0;
 }
@@ -14,4 +14,5 @@
     display: inline;
     height: 100%;
     width: 100%;
+    background-color: black;
 }

@@ -1,4 +1,12 @@
 window.addEventListener('DOMContentLoaded', function(e) {
+
+
+
+
+
+
+
+    
     var duration = 3000;
     var xStart = 0;
     var distance = 200;
