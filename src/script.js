@@ -80,8 +80,6 @@ window.addEventListener('DOMContentLoaded', function(e) {
     
 });
  
-
-function showFrame(canvas, ctx, sun, planets, stars, starColor, actualTime, asteroid, shootingStar, supernova) {
 /**
  * Frametick function.
  * This function handles a frame in the canvas.
