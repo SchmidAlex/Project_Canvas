@@ -22,7 +22,7 @@ class Planet {
       ctx.arc((this.x - this.distanceRadius) + Math.sin(this.winkel * Math.PI) * this.distanceRadius, this.y + Math.cos(this.winkel * Math.PI) * this.distanceRadius, this.sizeRadius, 0, 2 * Math.PI, false);
       ctx.fill();
       ctx.closePath();
-      this.winkel += this.velocity;
+      this.winkel += this.currentVelocity;
       if(this.winkel > 2){
         this.winkel = 0;
       }
