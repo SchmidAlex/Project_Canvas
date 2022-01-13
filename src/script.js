@@ -30,6 +30,11 @@ window.addEventListener('DOMContentLoaded', function(e) {
             stars.push(new Star(stars, starSize, canvas));
         }
 
+        planets.forEach(planet => {
+            //planet.setInterreactionVelocity(0.00000002);
+            //planet.setOnHold();
+        });
+
         //Start the animation
         showFrame(canvas, ctx, sun, planets, stars, starColor, actualTime, asteroid, shootingStar);
     });
