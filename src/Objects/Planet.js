@@ -40,9 +40,9 @@ class Planet {
       } else {
         if (this.interreactionVelocity > 1) {
           this.currentVelocity = this.currentVelocity * 1.01;
-        }else if(this.interreactionVelocity < this.currentVelocity){
+        } else if (this.interreactionVelocity < this.currentVelocity && this.interreactionVelocity != 0) {
           this.currentVelocity = this.currentVelocity / 1.01 + this.interreactionVelocity;
-        } else if(this.interreactionVelocity === 0 && this.onHold){
+        } else if (this.interreactionVelocity === 0 && this.onHold) {
           this.currentVelocity = this.currentVelocity / 1.01;
         }
       }
