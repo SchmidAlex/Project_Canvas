@@ -1,18 +1,4 @@
-*{
-    margin: 0;
-    padding: 0;
-}
-
-.container{
-    height: 750px;
-    width: 750px;
-    text-align: center;
-    margin: 0;
-}
-
 #myCanvas{
-    display: inline;
-    height: 100%;
-    width: 100%;
-    background-color: black;
+	background: black;
+	margin-left:50px;
 }
