@@ -12,11 +12,11 @@ class Planet {
     }
 
     draw(ctx) {
-      if (this.interreactionVelocity > 0 && this.interreactionVelocity > this.currentVelocity) {
-        this.currentVelocity = this.currentVelocity * 1.5;
-      }else if(this.interreactionVelocity > 0 && this.interreactionVelocity < this.currentVelocity){
-        this.currentVelocity = this.currentVelocity / 1.5;
-      }
+      // if (this.interreactionVelocity > 0 && this.interreactionVelocity > this.currentVelocity) {
+      //   this.currentVelocity = this.currentVelocity * 1.5;
+      // }else if(this.interreactionVelocity > 0 && this.interreactionVelocity < this.currentVelocity){
+      //   this.currentVelocity = this.currentVelocity / 1.5;
+      // }
       ctx.beginPath();
       ctx.fillStyle = this.color;
       ctx.arc((this.x - this.distanceRadius) + Math.sin(this.winkel * Math.PI) * this.distanceRadius, this.y + Math.cos(this.winkel * Math.PI) * this.distanceRadius, this.sizeRadius, 0, 2 * Math.PI, false);
