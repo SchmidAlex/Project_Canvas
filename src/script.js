@@ -9,12 +9,13 @@ window.addEventListener('DOMContentLoaded', function(e) {
         var stars = [];
         var starSize = 1;
         var starColor = '#fff';
-        var asteroid = new Asteroid(10, 10);
+        var asteroidSize = 10;
+        var asteroidColor = "#964B00";
         /** @type {HTMLCanvasElement} */
         let canvas = document.getElementById('myCanvas');
         let ctx = canvas.getContext('2d');
         var sun = new Sun(20, canvas); //size anpassen
-
+        var asteroid = new Asteroid(asteroidSize, 10, canvas, asteroidColor);
         /**
          * Create objects we need
          */
