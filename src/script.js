@@ -69,10 +69,11 @@ function showFrame(canvas, ctx, sun, planets, stars, starColor, actualTime, aste
     sun.draw(ctx);
 
     asteroid.draw(ctx);
-
+    
     shootingStar.draw(ctx);
 
     supernova.draw(ctx);
+    
 
     planets.forEach(planet => {
         planet.draw(ctx);
