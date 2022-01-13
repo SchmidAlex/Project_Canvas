@@ -1,8 +1,8 @@
 class Star {
-    constructor(stars, starSize) {
+    constructor(stars, starSize, canvas) {
 
-        var xPos = Math.floor(Math.random() * 999) + 1;
-        var yPos = Math.floor(Math.random() * 999) + 1;
+        var xPos = Math.floor(Math.random() * (canvas.width - 1)) + 1;
+        var yPos = Math.floor(Math.random() * (canvas.height - 1)) + 1;
 
         stars.forEach(star => {
             while (star.x + (starSize / 2) > xPos && star.x - (starSize / 2) < xPos 

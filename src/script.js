@@ -1,45 +1,53 @@
 window.addEventListener('DOMContentLoaded', function(e) {
-    /**
-     * Make variables we need
-     */
-    var planetCount = 8;
-    var planets = [];
-    var stars = [];
-    var starSize = 1;
-    var starColor = '#fff';
-    var sun = new Sun(20); //size anpassen
 
-    /**
-     * Create objects we need
-     */
-    for (let i = 1; i <= planetCount; i++) {
-        planets.push(new Planet(i * 50));
-    }
-
-    for (let i = 0; i < 300; i++) {
-        stars.push(new Star(stars, starSize));
-    }
-
-    //Start the animation
     window.requestAnimationFrame(function(actualTime) {
-        showFrame(sun, planets, stars, starColor);
+        /**
+         * Make variables we need
+         */
+        var planetCount = 8;
+        var planets = [];
+        var stars = [];
+        var starSize = 1;
+        var starColor = '#fff';
+        /** @type {HTMLCanvasElement} */
+        let canvas = document.getElementById('myCanvas');
+        let ctx = canvas.getContext('2d');
+        var sun = new Sun(20, canvas); //size anpassen
+
+        /**
+         * Create objects we need
+         */
+        for (let i = 1; i <= planetCount; i++) {
+            planets.push(new Planet(i * 50, canvas));//distanz anpassen (zur sonne)
+        }
+
+        for (let i = 0; i < 300; i++) {
+            stars.push(new Star(stars, starSize, canvas));
+        }
+
+        //Start the animation
+        showFrame(canvas, ctx, sun, planets, stars, starColor);
     });
+    
 });
  
 
-function showFrame(sun, planets, stars, starColor) {
-    /** @type {HTMLCanvasElement} */
-    let canvas = document.getElementById('myCanvas');
-    let ctx = canvas.getContext('2d');
+function showFrame(canvas, ctx, sun, planets, stars, starColor) {
+
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
 
     stars.forEach(star => {
         star.draw(ctx, starColor);
     });
 
-    sun.draw(ctx, canvas);
+    sun.draw(ctx);
 
     planets.forEach(planet => {
-        planet.draw(ctx, canvas);
+        planet.draw(ctx);
     });
 
+
+    window.requestAnimationFrame(function(actualTime) {
+        showFrame(canvas, ctx, sun, planets, stars, starColor);
+    });
 }

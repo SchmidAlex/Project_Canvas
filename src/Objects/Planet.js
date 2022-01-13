@@ -1,16 +1,23 @@
 class Planet {
-    constructor(distanceRadius) {
+    constructor(distanceRadius, canvas) {
       this.sizeRadius = Math.floor(Math.random() * 5) + 10;
-      this.velocity = Math.floor(Math.random() * 100) + 1;
+      this.velocity = ((Math.random() * 20) + 5) / 10000;
+      this.winkel = 0;
       this.distanceRadius = distanceRadius;
       this.color = "rgb(" + Math.floor(Math.random() * 256) + ", " + Math.floor(Math.random() * 256) + ", " + Math.floor(Math.random() * 256) + ")";
+      this.x = canvas.width / 2 + distanceRadius;
+      this.y = canvas.height / 2;
     }
 
-    draw(ctx, canvas) {
+    draw(ctx) {
       ctx.beginPath();
       ctx.fillStyle = this.color;
-      ctx.arc(canvas.width / 2 + this.distanceRadius , canvas.height / 2, this.sizeRadius, 0, 2 * Math.PI, false);
+      ctx.arc((this.x - this.distanceRadius) + Math.sin(this.winkel * Math.PI) * this.distanceRadius, this.y + Math.cos(this.winkel * Math.PI) * this.distanceRadius, this.sizeRadius, 0, 2 * Math.PI, false);
       ctx.fill();
       ctx.closePath();
+      this.winkel += this.velocity;
+      if(this.winkel > 2){
+        this.winkel = 0;
+      }
     }
 }
