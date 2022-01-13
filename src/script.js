@@ -1,6 +1,7 @@
 window.addEventListener('DOMContentLoaded', function(e) {
 
     window.requestAnimationFrame(function(actualTime) {
+        
         /**
          * Make variables we need
          */
@@ -14,15 +15,27 @@ window.addEventListener('DOMContentLoaded', function(e) {
         var shootingStarSize = 5;
         var shootingStarColor = '#fff';
         var shootingStarLivingTime = 150;
+<<<<<<< Updated upstream
         var supernovaSize = 15;
         var supernovaColor = '#ff0000';
+=======
+
+        /**
+         * Make all objects we need
+         */
+>>>>>>> Stashed changes
         /** @type {HTMLCanvasElement} */
         let canvas = document.getElementById('myCanvas');
         let ctx = canvas.getContext('2d');
         var sun = new Sun(20, canvas); //size anpassen
         var asteroid = new Asteroid(asteroidSize, 10, canvas, asteroidColor);
+<<<<<<< Updated upstream
         var shootingStar = new ShootingStar(shootingStarSize, 10, shootingStarColor, canvas, shootingStarLivingTime);
         var supernova = new Supernova(supernovaSize, supernovaColor, canvas);
+=======
+        var shootingStar = new ShootingStar(shootingStarSize, 10, shootingStarColor, canvas, shootingStarLivingTime)
+        
+>>>>>>> Stashed changes
         /**
          * Create objects we need
          */
@@ -30,6 +43,9 @@ window.addEventListener('DOMContentLoaded', function(e) {
             planets.push(new Planet(i * 50, canvas));//distanz anpassen (zur sonne)
         }
 
+        /**
+         * Create 300 stars
+         */
         for (let i = 0; i < 300; i++) {
             stars.push(new Star(stars, starSize, canvas));
         }
@@ -39,15 +55,30 @@ window.addEventListener('DOMContentLoaded', function(e) {
             //planet.setOnHold();
         });
 
+        /**
+         * Declare x-position variables for mouseevents
+         */
+        var mouseDownPoint;
+        var mouseUpPoint;
+
+        /**
+         * Eventhandler for clicking in the canvas
+         */
         document.getElementById('myCanvas').addEventListener('mousedown', function (e) {
             planets.forEach(planet => {
                 planet.setOnHold();
+                mouseDownPoint = e.clientX;
             });
         });
     
+        /**
+         * Eventhandler for let go of the click
+         */
         document.getElementById('myCanvas').addEventListener('mouseup', function (e) {
             planets.forEach(planet => {
                 planet.breakOnHold();
+                mouseUpPoint = e.clientX;
+                planet.setInterreactionVelocity(mouseDownPoint, mouseUpPoint);
             });
         });
 
@@ -57,28 +88,54 @@ window.addEventListener('DOMContentLoaded', function(e) {
     
 });
  
+<<<<<<< Updated upstream
 
 function showFrame(canvas, ctx, sun, planets, stars, starColor, actualTime, asteroid, shootingStar, supernova) {
+=======
+/**
+ * Frametick function.
+ * This function handles a frame in the canvas.
+ * @param {Canvas to draw on it} canvas 
+ * @param {CTX to draw} ctx 
+ * @param {The sun of the solar system} sun 
+ * @param {An array of planets in the solar system} planets 
+ * @param {An array of visible stars in the solar system} stars 
+ * @param {The color of the stars} starColor 
+ * @param {The actual time we have from the requestAnimationFrame} actualTime 
+ * @param {*} asteroid 
+ * @param {*} shootingStar 
+ */
+function showFrame(canvas, ctx, sun, planets, stars, starColor, actualTime, asteroid, shootingStar) {
+>>>>>>> Stashed changes
 
+    // We clear the whole canvas at firs
     ctx.clearRect(0, 0, canvas.width, canvas.height);
 
+    // For every star in the array, we gona draw the star
     stars.forEach(star => {
         star.draw(ctx, starColor);
     });
 
+    // Drawing the sun
     sun.draw(ctx);
 
+    // Drawing the asteroid
     asteroid.draw(ctx);
 
+    // Drawing the shooting star
     shootingStar.draw(ctx);
 
+<<<<<<< Updated upstream
     supernova.draw(ctx);
 
+=======
+    // For every planet in the array, we gona draw the planet
+>>>>>>> Stashed changes
     planets.forEach(planet => {
         planet.draw(ctx);
     });
 
-
+    // Next tick
     window.requestAnimationFrame(function(actualTime) {
         showFrame(canvas, ctx, sun, planets, stars, starColor, actualTime, asteroid, shootingStar, supernova);
     });

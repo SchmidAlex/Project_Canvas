@@ -19,7 +19,6 @@ class ShootingStar {
           this.y += 1;
           this.ticker += 1;
         }
-        console.log(this.ticker);
         ctx.fill();
         ctx.closePath();
     }
