@@ -9,6 +9,7 @@ window.addEventListener('DOMContentLoaded', function(e) {
         var stars = [];
         var starSize = 1;
         var starColor = '#fff';
+        var asteroid = new Asteroid(10, 10);
         /** @type {HTMLCanvasElement} */
         let canvas = document.getElementById('myCanvas');
         let ctx = canvas.getContext('2d');
@@ -26,13 +27,13 @@ window.addEventListener('DOMContentLoaded', function(e) {
         }
 
         //Start the animation
-        showFrame(canvas, ctx, sun, planets, stars, starColor);
+        showFrame(canvas, ctx, sun, planets, stars, starColor, asteroid);
     });
     
 });
  
 
-function showFrame(canvas, ctx, sun, planets, stars, starColor) {
+function showFrame(canvas, ctx, sun, planets, stars, starColor, asteroid) {
 
     ctx.clearRect(0, 0, canvas.width, canvas.height);
 
@@ -42,12 +43,14 @@ function showFrame(canvas, ctx, sun, planets, stars, starColor) {
 
     sun.draw(ctx);
 
+    asteroid.draw(ctx);
+
     planets.forEach(planet => {
         planet.draw(ctx);
     });
 
 
     window.requestAnimationFrame(function(actualTime) {
-        showFrame(canvas, ctx, sun, planets, stars, starColor);
+        showFrame(canvas, ctx, sun, planets, stars, starColor, asteroid);
     });
 }
