@@ -5,6 +5,7 @@ window.addEventListener('DOMContentLoaded', function(e) {
     var planetCount = 8;
     var planets = [];
     var stars = [];
+    var sun = new Sun(2); //size anpassen
 
     /**
      * Create objects we need
