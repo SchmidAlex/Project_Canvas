@@ -4,7 +4,11 @@ class Asteroid {
       this.velocity = velocity;
     }
 
-    draw() {
-        
-    }
+    draw(ctx) {
+        ctx.fillStyle = this.color;
+        ctx.beginPath();
+        ctx.arc(50, 50, this.size, 0, 2 * Math.PI, false);
+        ctx.fill();
+        ctx.closePath();
+        }
   }
