@@ -90,10 +90,10 @@ window.addEventListener('DOMContentLoaded', function(e) {
  * @param {An array of visible stars in the solar system} stars 
  * @param {The color of the stars} starColor 
  * @param {The actual time we have from the requestAnimationFrame} actualTime 
- * @param {*} asteroid 
- * @param {*} shootingStar 
+ * @param {The asteroids objects that appear in space} asteroid 
+ * @param {The shooting star object that appear in space} shootingStar 
  */
-function showFrame(canvas, ctx, sun, planets, stars, starColor, actualTime, asteroid, shootingStar) {
+function showFrame(canvas, ctx, sun, planets, stars, starColor, actualTime, asteroid, shootingStar, supernova) {
 
     // We clear the whole canvas at firs
     ctx.clearRect(0, 0, canvas.width, canvas.height);
@@ -112,9 +112,9 @@ function showFrame(canvas, ctx, sun, planets, stars, starColor, actualTime, aste
     // Drawing the shooting star
     shootingStar.draw(ctx);
 
+    // Drawing the supernova
     supernova.draw(ctx);
     
-
     // For every planet in the array, we gona draw the planet
     planets.forEach(planet => {
         planet.draw(ctx);
