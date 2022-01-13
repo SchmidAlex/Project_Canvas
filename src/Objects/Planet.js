@@ -1,4 +1,10 @@
 class Planet {
+
+    /**
+     * Constructor of a planet... almost everything is random generated
+     * @param distanceRadius the distance to the sun
+     * @param canvas the canvas, which we want to draw on
+     */
     constructor(distanceRadius, canvas) {
       this.sizeRadius = Math.floor(Math.random() * 5) + 10;
       this.defaultVelocity = ((Math.random() * 15) + 5) / 10000;
@@ -12,6 +18,10 @@ class Planet {
       this.y = canvas.height / 2;
     }
 
+    /**
+     * Draw function for the planet. The function draws the planet on the canvas
+     * @param ctx with which we want to draw
+     */
     draw(ctx) {
       this.speedUpAndSlowDown(1, 1/**+ 10 */);
       ctx.beginPath();
@@ -25,11 +35,21 @@ class Planet {
       }
     }
 
-    setInterreactionVelocity(speed){
-      //calculate the speed
-      this.interreactionVelocity = speed;
+    /**
+     * Handels the speedup variable in the planet
+     * @param mouseDownPoint X coords, when the user pressed the left mouse button
+     * @param mouseUpPoint X coords, when the user left the left mouse button
+     */
+    setInterreactionVelocity(mouseDownPoint, mouseUpPoint){
+      console.log(mouseUpPoint / mouseDownPoint / 10);
+      this.interreactionVelocity = mouseUpPoint / mouseDownPoint / 10;
     }
 
+    /**
+     * Handels speeding planets up or slowing them down.
+     * @param actualActionTime 
+     * @param setActionTime 
+     */
     speedUpAndSlowDown(actualActionTime, setActionTime){
       if (actualActionTime > setActionTime) {
         if (this.interreactionVelocity > 0) {
