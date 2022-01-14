@@ -19,6 +19,7 @@ class ShootingStar {
       
       // Integer for the living time which is on 0 per default
       this.livingTime = livingTime;
+      
     }
 
     /**
@@ -30,7 +31,7 @@ class ShootingStar {
         // Set color based on parameter given when initialising shooting star class
         ctx.fillStyle = this.color;
         ctx.beginPath();
-
+        
         // Draw shooting star
         ctx.arc(this.x, this.y, this.size, 0, 2 * Math.PI, false);
         
@@ -40,7 +41,7 @@ class ShootingStar {
 
         // Decrease living time by one
         this.livingTime--;
-        
+
         ctx.fill();
         ctx.closePath();
     }
