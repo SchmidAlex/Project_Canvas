@@ -9,6 +9,7 @@ window.addEventListener('DOMContentLoaded', function(e) {
          * Make variables we need
          */
         var planetCount = 8;
+        var starAmount = 300;
         var distancePlanetToSun = 50;
         var planets = [];
         var stars = [];
@@ -48,14 +49,13 @@ window.addEventListener('DOMContentLoaded', function(e) {
          * Create planets we need
          */
         for (let i = 1; i <= planetCount; i++) {
-            planets.push(new Planet(i * distancePlanetToSun, canvas));//distanz anpassen (zur sonne)
+            planets.push(new Planet(i * distancePlanetToSun, canvas));
         }
 
         /**
          * Create 300 stars
          */
-        for (let i = 0; i < 300; i++) {
-        var starColor = '#fff';
+        for (let i = 0; i < starAmount; i++) {
             stars.push(new Star(stars, starSize, canvas, starColor, starShadowColor, starShadowBlur));
         }
 
