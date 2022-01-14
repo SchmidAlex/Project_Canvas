@@ -6,9 +6,11 @@ class Supernova {
      * @param {Canvas object} canvas 
      * @param {Durartion of the supernova to appear in space} livingTime
      */
-    constructor(size, color, canvas, livingTime) {
+    constructor(size, color, canvas, livingTime, supernovaShadowColor, supernovaShadowBlur) {
       this.size = size;
       this.color = color;
+      this.supernovaShadowColor = supernovaShadowColor;
+      this.supernovaShadowBlur = supernovaShadowBlur;
 
       // The x Position and y Position of the supernova random calculated based on the canvas dimensions
       this.x = Math.floor(Math.random() * canvas.width);
@@ -26,6 +28,8 @@ class Supernova {
       
       // Set color based on parameter given when initialising supernova class
       ctx.fillStyle = this.color;
+      ctx.shadowColor = this.supernovaShadowColor;
+      ctx.shadowBlur = this.supernovaShadowBlur;
       ctx.beginPath();
 
       // Draw supernova
@@ -36,5 +40,6 @@ class Supernova {
 
       ctx.fill();
       ctx.closePath();
+      ctx.shadowColor = 'transparent';
     }
   }
