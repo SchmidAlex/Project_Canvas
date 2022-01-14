@@ -13,18 +13,27 @@ class Star {
         var xPos = Math.floor(Math.random() * (canvas.width - 1)) + 1;
         var yPos = Math.floor(Math.random() * (canvas.height - 1)) + 1;
 
-        // Check if the position isn't already taken by another star
+        // For every star, we already have we check the x and y position (with the width and height of the star), to the new star and if so we will calculate a new star position for the new star
         stars.forEach(star => {
             while (star.x + (starSize / 2) > xPos && star.x - (starSize / 2) < xPos 
                 && star.y + (starSize / 2) > yPos && star.y - (starSize / 2) < yPos) {
+
+                // Check if the x position of the stare is on the x position of another star
                 if (star.x + (starSize / 2) > xPos && star.x - (starSize / 2) < xPos) {
+                    
+                    // Generate a new x position of the new star
                     xPos = Math.floor(Math.random() * 100) + 1;
                 } else{
+
+                    // Generate a new y position of the new star
                     yPos = Math.floor(Math.random() * 100) + 1;
                 }
             }
         });
 
+        /**
+         * Variabledeclaration of the star
+         */
         this.x = xPos;
         this.y = yPos;
         this.starSize = starSize;

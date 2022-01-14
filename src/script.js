@@ -22,6 +22,10 @@ window.addEventListener('DOMContentLoaded', function(e) {
         var supernovaSize = 15;
         var supernovaColor = '#ff0000';
         const initialSupernovaLivingTime = 0;
+        var sunSize = 20;
+        var sunColor = '#fdb813';
+        var sunShadowColor = '#fdb813';
+        var sunShadowBlur = 35;
 
         /**
          * Make all objects we need
@@ -29,7 +33,7 @@ window.addEventListener('DOMContentLoaded', function(e) {
         /** @type {HTMLCanvasElement} */
         let canvas = document.getElementById('myCanvas');
         let ctx = canvas.getContext('2d');
-        var sun = new Sun(20, canvas); //size anpassen
+        var sun = new Sun(sunSize, canvas, sunColor, sunShadowColor, sunShadowBlur);
         var asteroid = new Asteroid(asteroidSize, 10, asteroidColor, asteroidLivingTime);
         var shootingStar = new ShootingStar(shootingStarSize, 10, shootingStarColor, canvas, initialShootingStarLivingTime);
         var supernova = new Supernova(supernovaSize, supernovaColor, canvas, initialSupernovaLivingTime);
@@ -60,8 +64,12 @@ window.addEventListener('DOMContentLoaded', function(e) {
          * Eventhandler for clicking in the canvas
          */
          document.getElementById('myCanvas').addEventListener('mousedown', function (e) {
+
+            //Get the x position of the click and the time
             mouseDownPoint = e.clientX;
             mouseTimeDown = e.timeStamp;
+
+            // For every planet we set the boolean onHold on true
             planets.forEach(planet => {
                 planet.setOnHold(mouseTimeDown);
             });
@@ -71,14 +79,22 @@ window.addEventListener('DOMContentLoaded', function(e) {
          * Eventhandler for let go of the click
          */
         document.getElementById('myCanvas').addEventListener('mouseup', function (e) {
+
+            // Get the x poistion, when the mouse was released and its time
             mouseUpPoint = Math.floor(e.clientX);
             mouseTimeUp = Math.floor(e.timeStamp);
+
+            // Check if the Mouse were dragged left or right
             if(mouseDownPoint < mouseUpPoint){
+
+                // For every planet break hold status and create an interreaction velocity
                 planets.forEach(planet => {
                     planet.breakOnHold(mouseTimeUp);
                     planet.setInterreactionVelocity(mouseDownPoint, mouseUpPoint, mouseTimeDown, mouseTimeUp);
                 });
             } else {
+
+                // For every planet break hold status and create an interreaction velocity
                 planets.forEach(planet => {
                     planet.breakOnHold(mouseTimeUp);
                     planet.setInterreactionVelocity(mouseUpPoint, mouseDownPoint, mouseTimeDown, mouseTimeUp);
