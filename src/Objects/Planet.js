@@ -72,7 +72,7 @@ class Planet {
     this.angle += this.currentVelocity;
 
     // Reset the angle
-    if(this.angle > 2){
+    if(this.angle > 2) {
       this.angle = 0;
     }
   }
@@ -84,7 +84,7 @@ class Planet {
    * @param mouseTimeDown is the time, when the left mouse button was pressed
    * @param mouseTimeUp is the time, when the left mouse button were released
    */
-  setInterreactionVelocity(mouseDownPoint, mouseUpPoint, mouseTimeDown, mouseTimeUp){
+  setInterreactionVelocity(mouseDownPoint, mouseUpPoint, mouseTimeDown, mouseTimeUp) {
 
     // Calculate the holdtime of the mouse in ms
     let holdTime = mouseTimeUp - mouseTimeDown;
@@ -107,7 +107,7 @@ class Planet {
    * @param actualActionTime the actual time in ms
    * @param speedUpOrSlowDownTime the calculated time, when the planets reaches their speed
    */
-  speedUpAndSlowDown(actualActionTime, speedUpOrSlowDownTime){
+  speedUpAndSlowDown(actualActionTime, speedUpOrSlowDownTime) {
 
     // Check if the time runned out to reach their speed
     if (actualActionTime > speedUpOrSlowDownTime - 10 && actualActionTime < speedUpOrSlowDownTime + 10) { 
@@ -133,7 +133,7 @@ class Planet {
           let tempThis = this;
 
           // Window function to set a timeout (asynchron)
-          window.setTimeout(function(){
+          window.setTimeout(function() {
 
             // When the time passed, we will create a new interreaction velocity to the default velocity of the planet
             tempThis.interreactionVelocity = tempThis.defaultVelocity;
@@ -204,7 +204,7 @@ class Planet {
         }
 
         // Check if the planets were on hold through an click
-      } else if (this.onHold){
+      } else if (this.onHold) {
 
         // If so slow them down
         this.currentVelocity = this.currentVelocity / 1.01;
@@ -216,7 +216,7 @@ class Planet {
    * Function to handle the mouseclick
    * @param mouseTimeDown the time, when the left mouse button was pressed down
    */
-  setOnHold(mouseTimeDown){
+  setOnHold(mouseTimeDown) {
     
     // Set the boolean, to know, that the left mouse button is pressed
     this.onHold = true;
@@ -232,7 +232,7 @@ class Planet {
    * Function to handle the mouseclick release
    * @param mouseTimeUp the time, when the left mouse button were released
    */
-  breakOnHold(mouseTimeUp){
+  breakOnHold(mouseTimeUp) {
 
     // Set the boolean, to know, that the left mouse button were released
     this.onHold = false;

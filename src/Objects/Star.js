@@ -23,7 +23,7 @@ class Star {
                     
                     // Generate a new x position of the new star
                     xPos = Math.floor(Math.random() * 100) + 1;
-                } else{
+                } else {
 
                     // Generate a new y position of the new star
                     yPos = Math.floor(Math.random() * 100) + 1;
