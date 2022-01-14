@@ -47,10 +47,10 @@ class Asteroid {
         ctx.fillStyle = this.color;
         ctx.beginPath();
 
-        if(this.x < canvas.width && this.y < canvas.height) {
+        //if(this.x < canvas.width && this.y < canvas.height) {
           // Draw asteroid
           ctx.arc(this.x, this.y, this.size, 0, 2 * Math.PI, false);
-        }
+        //}
         
         // Check side to move asteroid in the screen not outside
         switch (this.side) {
