@@ -4,9 +4,10 @@ class Star {
      * 
      * @param {Empty array} stars 
      * @param {Size of the star} starSize 
-     * @param {Canvas object} canvas 
+     * @param {Canvas object} canvas
+     * @param {Color of the star} starColor
      */
-    constructor(stars, starSize, canvas) {
+    constructor(stars, starSize, canvas, starColor) {
 
         // Random x and y position of the star based on the measures of the canvas
         var xPos = Math.floor(Math.random() * (canvas.width - 1)) + 1;
@@ -27,11 +28,16 @@ class Star {
         this.x = xPos;
         this.y = yPos;
         this.starSize = starSize;
+        this.starColor = starColor;
     }
-    //color abweichung TODO
-    draw(ctx, starColor) {
+    
+    /**
+     * Draw function of the star class
+     * @param {Ctx object} ctx 
+     */
+    draw(ctx) {
         ctx.beginPath();
-        ctx.fillStyle = starColor;
+        ctx.fillStyle = this.starColor;
 
         // Draw star
         ctx.arc(this.x, this.y, this.starSize, 0, 2 * Math.PI, false);
