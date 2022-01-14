@@ -73,8 +73,6 @@ window.addEventListener('DOMContentLoaded', function(e) {
         document.getElementById('myCanvas').addEventListener('mouseup', function (e) {
             mouseUpPoint = e.clientX;
             mouseTimeUp = e.timeStamp;
-            console.log(mouseTimeDown);
-            console.log(mouseTimeUp);
             planets.forEach(planet => {
                 planet.breakOnHold();
                 planet.setInterreactionVelocity(mouseDownPoint, mouseUpPoint, mouseTimeDown, mouseTimeUp);
