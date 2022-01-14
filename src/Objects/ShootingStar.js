@@ -28,8 +28,8 @@ class ShootingStar {
         ctx.fillStyle = this.color;
         ctx.beginPath();
 
-        // Check if the living time of the shooting star is already reached
-        if(this.ticker <= this.livingTime) {
+        // Check if the living time of the shooting star is higher than 0. It gets increased if the random event takes place in the showFrame function
+        if(this.livingTime >= 0) {
 
           // Draw shooting star
           ctx.arc(this.x, this.y, this.size, 0, 2 * Math.PI, false);
@@ -38,8 +38,8 @@ class ShootingStar {
           this.x += 1;
           this.y += 1;
 
-          // Increase counter
-          this.ticker += 1;
+         // Decrease living time
+         this.livingTime--;
         }
         ctx.fill();
         ctx.closePath();

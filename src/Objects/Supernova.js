@@ -14,8 +14,7 @@ class Supernova {
       this.x = Math.floor(Math.random() * canvas.width);
       this.y = Math.floor(Math.random() * canvas.height);
 
-      // Counter for the living time
-      this.ticker = 0;
+      // Integer for the living time which is on 0 per default
       this.livingTime = livingTime;
     }
 
@@ -25,7 +24,7 @@ class Supernova {
       ctx.beginPath();
 
       // Check if the living time of the supernova is already reached
-      if(this.ticker <= this.livingTime) {
+      if(this.livingTime >= 0) {
 
         // Draw supernova
         ctx.arc(this.x, this.y, this.size, 0, 2 * Math.PI, false);
@@ -34,8 +33,8 @@ class Supernova {
         this.x += 1;
         this.y += 1;
 
-        // Increase counter
-        this.ticker += 1;
+        // Decrease living time
+        this.livingTime--;
       }
 
 

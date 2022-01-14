@@ -14,10 +14,10 @@ window.addEventListener('DOMContentLoaded', function(e) {
         var asteroidColor = "#964B00";
         var shootingStarSize = 5;
         var shootingStarColor = '#fff';
-        var shootingStarLivingTime = 150;
+        const initialShootingStarLivingTime = 0;
         var supernovaSize = 15;
         var supernovaColor = '#ff0000';
-        var supernovaLivingTime = 150;
+        const initialSupernovaLivingTime = 0;
 
         /**
          * Make all objects we need
@@ -27,8 +27,8 @@ window.addEventListener('DOMContentLoaded', function(e) {
         let ctx = canvas.getContext('2d');
         var sun = new Sun(20, canvas); //size anpassen
         var asteroid = new Asteroid(asteroidSize, 10, canvas, asteroidColor);
-        var shootingStar = new ShootingStar(shootingStarSize, 10, shootingStarColor, canvas, shootingStarLivingTime);
-        var supernova = new Supernova(supernovaSize, supernovaColor, canvas, supernovaLivingTime);
+        var shootingStar = new ShootingStar(shootingStarSize, 10, shootingStarColor, canvas, initialShootingStarLivingTime);
+        var supernova = new Supernova(supernovaSize, supernovaColor, canvas, initialSupernovaLivingTime);
         /**
          * Create objects we need
          */
