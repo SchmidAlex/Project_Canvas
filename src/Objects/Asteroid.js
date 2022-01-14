@@ -62,7 +62,6 @@ class Asteroid {
           
           if((this.x >= canvas.width + 5 || this.y >= canvas.height + 5) || (this.x < -5 || this.y < -5)) {
             this.livingTime = false;
-            console.log('penis');
           }
         }
         
