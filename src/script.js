@@ -88,7 +88,7 @@ window.addEventListener('DOMContentLoaded', function(e) {
             mouseTimeUp = Math.floor(e.timeStamp);
 
             // Check if the Mouse were dragged left or right
-            if(mouseDownPoint < mouseUpPoint){
+            if(mouseDownPoint < mouseUpPoint) {
 
                 // For every planet break hold status and create an interreaction velocity
                 planets.forEach(planet => {
