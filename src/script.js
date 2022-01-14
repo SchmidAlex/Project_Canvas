@@ -12,8 +12,10 @@ window.addEventListener('DOMContentLoaded', function(e) {
         var distancePlanetToSun = 50;
         var planets = [];
         var stars = [];
-        var starSize = 1;
+        var starSize = 5;
         var starColor = '#fff';
+        var starShadowColor = '#fff';
+        var starShadowBlur = 35;
         var asteroidSize = 10;
         var asteroidColor = "#964B00";
         const asteroidLivingTime = false;
@@ -52,7 +54,7 @@ window.addEventListener('DOMContentLoaded', function(e) {
          */
         for (let i = 0; i < 300; i++) {
         var starColor = '#fff';
-            stars.push(new Star(stars, starSize, canvas, starColor));
+            stars.push(new Star(stars, starSize, canvas, starColor, starShadowColor, starShadowBlur));
         }
 
         /**
