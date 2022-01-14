@@ -1,4 +1,5 @@
 class ShootingStar {
+  
     /**
      * Constructor of the shooting star
      * @param {Size of the shooting star in pixel} size 

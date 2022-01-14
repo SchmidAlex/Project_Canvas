@@ -1,4 +1,5 @@
 class Asteroid {
+  
     /**
      * Constructor of the asteroid
      * @param {Size of the asteroid in pixel} size 

@@ -114,6 +114,7 @@ function showFrame(canvas, ctx, sun, planets, stars, starColor, actualTime, aste
     // Drawing the asteroid
     asteroid.draw(ctx);
 
+    //if (//random ist gleich)
     // Drawing the shooting star
     shootingStar.draw(ctx);
 
