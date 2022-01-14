@@ -1,7 +1,7 @@
 class Asteroid {
   
     /**
-     * Constructor of the asteroid
+     * Constructor of the asteroid class
      * @param {Size of the asteroid in pixel} size 
      * @param {Velocity of the asteroid} velocity 
      * @param {Color of the asteroid} color 
@@ -22,6 +22,7 @@ class Asteroid {
      */
     changeSides(canvas) {
 
+      // Random asignement of the site. 0 = top. 1 = left. 2 = right. 3 = bottom
       this.side = Math.floor(Math.random() * 4)
       switch (this.side) {
         // Asteroid spawns on top border
@@ -61,17 +62,14 @@ class Asteroid {
         ctx.fillStyle = this.color;
         ctx.beginPath();
 
-        //testing here
-        if(this.livingTime == true) {
-          // Draw asteroid
-          ctx.arc(this.x, this.y, this.size, 0, 2 * Math.PI, false);
-          
-          //check if the asteroid is still inside the canvas object
-          if((this.x >= canvas.width + 5 || this.y >= canvas.height + 5) || (this.x < -5 || this.y < -5)) {
+        // Draw asteroid
+        ctx.arc(this.x, this.y, this.size, 0, 2 * Math.PI, false);
+        
+        //check if the asteroid is still inside the canvas object
+        if((this.x >= canvas.width + 5 || this.y >= canvas.height + 5) || (this.x < -5 || this.y < -5)) {
 
-            //if not set living time to false for a new asteroid to get drawn in case of the random event takes place
-            this.livingTime = false;
-          }
+          //if not set living time to false for a new asteroid to get drawn in case of the random event takes place
+          this.livingTime = false;
         }
         
         // Check side to move asteroid in the screen not outside

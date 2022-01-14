@@ -28,15 +28,12 @@ class Supernova {
       ctx.fillStyle = this.color;
       ctx.beginPath();
 
-      // Check if the living time of the supernova is already reached
-      if(this.livingTime >= 0) {
+      // Draw supernova
+      ctx.arc(this.x, this.y, this.size, 0, 2 * Math.PI, false);
 
-        // Draw supernova
-        ctx.arc(this.x, this.y, this.size, 0, 2 * Math.PI, false);
+      // Decrease living time by one
+      this.livingTime--;
 
-        // Decrease living time by one
-        this.livingTime--;
-      }
       ctx.fill();
       ctx.closePath();
     }
