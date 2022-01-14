@@ -22,6 +22,10 @@ window.addEventListener('DOMContentLoaded', function(e) {
         var supernovaSize = 15;
         var supernovaColor = '#ff0000';
         const initialSupernovaLivingTime = 0;
+        var sunSize = 20;
+        var sunColor = '#fdb813';
+        var sunShadowColor = '#fdb813';
+        var sunShadowBlur = 35;
 
         /**
          * Make all objects we need
@@ -29,7 +33,7 @@ window.addEventListener('DOMContentLoaded', function(e) {
         /** @type {HTMLCanvasElement} */
         let canvas = document.getElementById('myCanvas');
         let ctx = canvas.getContext('2d');
-        var sun = new Sun(20, canvas); //size anpassen
+        var sun = new Sun(sunSize, canvas, sunColor, sunShadowColor, sunShadowBlur);
         var asteroid = new Asteroid(asteroidSize, 10, asteroidColor, asteroidLivingTime);
         var shootingStar = new ShootingStar(shootingStarSize, 10, shootingStarColor, canvas, initialShootingStarLivingTime);
         var supernova = new Supernova(supernovaSize, supernovaColor, canvas, initialSupernovaLivingTime);
