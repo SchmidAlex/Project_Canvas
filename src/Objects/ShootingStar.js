@@ -8,10 +8,12 @@ class ShootingStar {
      * @param {Canvas sbject} canvas 
      * @param {Duration of the shooting star to appear in space} livingTime 
      */
-    constructor(size, velocity, color, canvas, livingTime) {
+    constructor(size, velocity, color, canvas, livingTime, shootingStarShadowColor, shootingStarShadowBlur) {
       this.size = size;
       this.velocity = velocity;
       this.color = color;
+      this.shootingStarShadowColor = shootingStarShadowColor;
+      this.shootingStarShadowBlur = shootingStarShadowBlur;
 
       // The x Position and y Position for the shooting star to appear. Random calculated based on the canvas dimensions
       this.x = Math.floor(Math.random() * canvas.width);
@@ -42,7 +44,10 @@ class ShootingStar {
         // Decrease living time by one
         this.livingTime--;
 
+        ctx.shadowColor = this.shootingStarShadowColor;
+        ctx.shadowBlur = this.shootingStarShadowBlur;
         ctx.fill();
         ctx.closePath();
+        ctx.shadowColor = 'transparent';
     }
   }

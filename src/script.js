@@ -12,15 +12,17 @@ window.addEventListener('DOMContentLoaded', function(e) {
         var distancePlanetToSun = 50;
         var planets = [];
         var stars = [];
-        var starSize = 5;
+        var starSize = 1;
         var starColor = '#fff';
         var starShadowColor = '#fff';
-        var starShadowBlur = 35;
+        var starShadowBlur = 5;
         var asteroidSize = 10;
         var asteroidColor = "#964B00";
         const asteroidLivingTime = false;
         var shootingStarSize = 5;
         var shootingStarColor = '#fff';
+        var shootingStarShadowColor = '#fff';
+        var shootingStarShadowBlur = 35;
         const initialShootingStarLivingTime = 0;
         var supernovaSize = 15;
         var supernovaColor = '#ff0000';
@@ -40,7 +42,7 @@ window.addEventListener('DOMContentLoaded', function(e) {
         let ctx = canvas.getContext('2d');
         var sun = new Sun(sunSize, canvas, sunColor, sunShadowColor, sunShadowBlur);
         var asteroid = new Asteroid(asteroidSize, 10, asteroidColor, asteroidLivingTime);
-        var shootingStar = new ShootingStar(shootingStarSize, 10, shootingStarColor, canvas, initialShootingStarLivingTime);
+        var shootingStar = new ShootingStar(shootingStarSize, 10, shootingStarColor, canvas, initialShootingStarLivingTime, shootingStarShadowColor, shootingStarShadowBlur);
         var supernova = new Supernova(supernovaSize, supernovaColor, canvas, initialSupernovaLivingTime, supernovaShadowColor, supernovaShadowBlur);
         /**
          * Create planets we need
