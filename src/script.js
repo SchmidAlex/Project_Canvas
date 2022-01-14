@@ -59,11 +59,11 @@ window.addEventListener('DOMContentLoaded', function(e) {
         /**
          * Eventhandler for clicking in the canvas
          */
-        document.getElementById('myCanvas').addEventListener('mousedown', function (e) {
+         document.getElementById('myCanvas').addEventListener('mousedown', function (e) {
             mouseDownPoint = e.clientX;
             mouseTimeDown = e.timeStamp;
             planets.forEach(planet => {
-                planet.setOnHold();
+                planet.setOnHold(mouseTimeDown);
             });
         });
     
@@ -71,14 +71,19 @@ window.addEventListener('DOMContentLoaded', function(e) {
          * Eventhandler for let go of the click
          */
         document.getElementById('myCanvas').addEventListener('mouseup', function (e) {
-            mouseUpPoint = e.clientX;
-            mouseTimeUp = e.timeStamp;
-            console.log(mouseTimeDown);
-            console.log(mouseTimeUp);
-            planets.forEach(planet => {
-                planet.breakOnHold();
-                planet.setInterreactionVelocity(mouseDownPoint, mouseUpPoint, mouseTimeDown, mouseTimeUp);
-            });
+            mouseUpPoint = Math.floor(e.clientX);
+            mouseTimeUp = Math.floor(e.timeStamp);
+            if(mouseDownPoint < mouseUpPoint){
+                planets.forEach(planet => {
+                    planet.breakOnHold(mouseTimeUp);
+                    planet.setInterreactionVelocity(mouseDownPoint, mouseUpPoint, mouseTimeDown, mouseTimeUp);
+                });
+            } else {
+                planets.forEach(planet => {
+                    planet.breakOnHold(mouseTimeUp);
+                    planet.setInterreactionVelocity(mouseUpPoint, mouseDownPoint, mouseTimeDown, mouseTimeUp);
+                });
+            }
         });
 
         //Start the animation
