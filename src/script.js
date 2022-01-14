@@ -177,7 +177,7 @@ function showFrame(canvas, ctx, sun, planets, stars, starColor, actualTime, aste
     }
     
     // Random event to launch the drawing of a supernova
-    if (Math.random() <= 0.001 && supernova.livingTime == 0) {
+    if (Math.random() <= 0.004 && supernova.livingTime == 0) {
 
         // Set the living time of the supernova
         supernova.livingTime = supernovaLivingTime;
