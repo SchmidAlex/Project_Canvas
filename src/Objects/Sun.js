@@ -11,6 +11,10 @@ class Sun {
       this.y = canvas.height / 2;
     }
 
+    /**
+     * Draw function of the sun class 
+     * @param {Ctx object} ctx 
+     */
     draw(ctx) {
 
       // Set color of the sun

@@ -18,6 +18,10 @@ class Supernova {
       this.livingTime = livingTime;
     }
 
+    /**
+     * Draw function of the supernova class
+     * @param {Ctx object} ctx 
+     */
     draw(ctx) {
       
       // Set color based on parameter given when initialising supernova class
@@ -30,7 +34,7 @@ class Supernova {
         // Draw supernova
         ctx.arc(this.x, this.y, this.size, 0, 2 * Math.PI, false);
 
-        // Increase counter
+        // Decrease living time by one
         this.livingTime--;
       }
       ctx.fill();

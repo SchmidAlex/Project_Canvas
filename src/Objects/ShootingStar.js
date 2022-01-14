@@ -21,6 +21,10 @@ class ShootingStar {
       this.livingTime = livingTime;
     }
 
+    /**
+     * Draw function of the shooting star class
+     * @param {Ctx object} ctx 
+     */
     draw(ctx) {
 
         // Set color based on parameter given when initialising shooting star class
@@ -37,7 +41,7 @@ class ShootingStar {
           this.x += 1;
           this.y += 1;
 
-          // Decrease living time
+          // Decrease living time by one
           this.livingTime--;
         }
         ctx.fill();

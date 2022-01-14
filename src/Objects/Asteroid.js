@@ -4,8 +4,8 @@ class Asteroid {
      * Constructor of the asteroid
      * @param {Size of the asteroid in pixel} size 
      * @param {Velocity of the asteroid} velocity 
-     * @param {Canvas object} canvas 
      * @param {Color of the asteroid} color 
+     * @param {Living time boolean} livingTime
      */
     constructor(size, velocity, color, livingTime) {
       this.size = size;
@@ -14,11 +14,12 @@ class Asteroid {
       this.livingTime = livingTime;
       this.x;
       this.y;
-
-      // Choose random one of four sides for the asteriod to appear
-      
     }
 
+    /**
+     * Function to change the spawning site of the asteroid
+     * @param {Canvas object} canvas 
+     */
     changeSides(canvas) {
 
       this.side = Math.floor(Math.random() * 4)
@@ -49,6 +50,11 @@ class Asteroid {
       }
     }
 
+    /**
+     * Draw function of the asteroid class
+     * @param {Ctx object} ctx 
+     * @param {Canvas object} canvas 
+     */
     draw(ctx, canvas) {
 
         // Set color based on parameter given when initialising asteroid class
@@ -60,7 +66,10 @@ class Asteroid {
           // Draw asteroid
           ctx.arc(this.x, this.y, this.size, 0, 2 * Math.PI, false);
           
+          //check if the asteroid is still inside the canvas object
           if((this.x >= canvas.width + 5 || this.y >= canvas.height + 5) || (this.x < -5 || this.y < -5)) {
+
+            //if not set living time to false for a new asteroid to get drawn in case of the random event takes place
             this.livingTime = false;
           }
         }

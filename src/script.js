@@ -1,5 +1,8 @@
+
+// EventListener when the dom content is loaded
 window.addEventListener('DOMContentLoaded', function(e) {
 
+    // First animation step
     window.requestAnimationFrame(function(actualTime) {
         
         /**
@@ -31,7 +34,7 @@ window.addEventListener('DOMContentLoaded', function(e) {
         var shootingStar = new ShootingStar(shootingStarSize, 10, shootingStarColor, canvas, initialShootingStarLivingTime);
         var supernova = new Supernova(supernovaSize, supernovaColor, canvas, initialSupernovaLivingTime);
         /**
-         * Create objects we need
+         * Create planets we need
          */
         for (let i = 1; i <= planetCount; i++) {
             planets.push(new Planet(i * 50, canvas));//distanz anpassen (zur sonne)
@@ -41,7 +44,8 @@ window.addEventListener('DOMContentLoaded', function(e) {
          * Create 300 stars
          */
         for (let i = 0; i < 300; i++) {
-            stars.push(new Star(stars, starSize, canvas));
+        var starColor = '#fff';
+            stars.push(new Star(stars, starSize, canvas, starColor));
         }
 
         /**
@@ -126,9 +130,11 @@ function showFrame(canvas, ctx, sun, planets, stars, starColor, actualTime, aste
         // Reposition the spawnpoint of the asteroid everytime a "new" one gets drawn
         asteroid.changeSides(canvas);
         
+        // Set the living time to true to make the asteriod draw itself in the next step
         asteroid.livingTime = true;
     }
 
+    // If the random event above takes place the asteroid gets drawn
     if(asteroid.livingTime) {
 
         // Drawing the asteroid
@@ -154,7 +160,7 @@ function showFrame(canvas, ctx, sun, planets, stars, starColor, actualTime, aste
     }
     
     // Random event to launch the drawing of a supernova
-    if (Math.random() <= 0.005 && supernova.livingTime == 0) {
+    if (Math.random() <= 0.003 && supernova.livingTime == 0) {
 
         // Set the living time of the supernova
         supernova.livingTime = supernovaLivingTime;
