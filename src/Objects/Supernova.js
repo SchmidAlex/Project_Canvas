@@ -14,11 +14,12 @@ class Supernova {
       this.x = Math.floor(Math.random() * canvas.width);
       this.y = Math.floor(Math.random() * canvas.height);
 
-      // Integer for the living time which is on 0 per default
+     // Integer for the living time which is on 0 per default
       this.livingTime = livingTime;
     }
 
     draw(ctx) {
+      
       // Set color based on parameter given when initialising supernova class
       ctx.fillStyle = this.color;
       ctx.beginPath();
@@ -28,18 +29,10 @@ class Supernova {
 
         // Draw supernova
         ctx.arc(this.x, this.y, this.size, 0, 2 * Math.PI, false);
-        
-        // Increase position for moving effect when supernova is redrawing itself
-        this.x += 1;
-        this.y += 1;
 
-        // Decrease living time
+        // Increase counter
         this.livingTime--;
       }
-
-
-      // Draw supernova
-      ctx.arc(this.x, this.y, this.size, 0, 2 * Math.PI, false);
       ctx.fill();
       ctx.closePath();
     }

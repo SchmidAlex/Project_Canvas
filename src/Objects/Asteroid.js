@@ -51,7 +51,7 @@ class Asteroid {
           // Draw asteroid
           ctx.arc(this.x, this.y, this.size, 0, 2 * Math.PI, false);
         }
-
+        
         // Check side to move asteroid in the screen not outside
         switch (this.side) {
           // In case of the asteroid spawning on the top or left border, it can move down and right

@@ -73,6 +73,8 @@ window.addEventListener('DOMContentLoaded', function(e) {
         document.getElementById('myCanvas').addEventListener('mouseup', function (e) {
             mouseUpPoint = e.clientX;
             mouseTimeUp = e.timeStamp;
+            console.log(mouseTimeDown);
+            console.log(mouseTimeUp);
             planets.forEach(planet => {
                 planet.breakOnHold();
                 planet.setInterreactionVelocity(mouseDownPoint, mouseUpPoint, mouseTimeDown, mouseTimeUp);
@@ -100,6 +102,12 @@ window.addEventListener('DOMContentLoaded', function(e) {
  */
 function showFrame(canvas, ctx, sun, planets, stars, starColor, actualTime, asteroid, shootingStar, supernova) {
 
+    // time for the shooting star to appear
+    var shootingStarLivingTime = 150;
+
+    // time for the supernova to appear
+    var supernovaLivingTime = 80;
+
     // We clear the whole canvas at firs
     ctx.clearRect(0, 0, canvas.width, canvas.height);
 
@@ -114,16 +122,46 @@ function showFrame(canvas, ctx, sun, planets, stars, starColor, actualTime, aste
     // Drawing the asteroid
     asteroid.draw(ctx);
 
-    //if (//random ist gleich)
-    // Drawing the shooting star
-    shootingStar.draw(ctx);
-
-    // Drawing the supernova
-    supernova.draw(ctx);
     
+    // Random event to launch the drawing of a shooting star
+    if (Math.random() <= 0.009 && shootingStar.livingTime == 0) {
+
+        // Set the living time of the shooting star 
+        shootingStar.livingTime = shootingStarLivingTime;
+
+        // Reposition the spawnpoint of the shooting star everytime a "new" one gets drawn
+        shootingStar.x = Math.floor(Math.random() * canvas.width);
+        shootingStar.y = Math.floor(Math.random() * canvas.height);
+    }
+
+    // If the random event above took place a shooting star gets drawn
+    if(shootingStar.livingTime > 0) {
+
+        // Drawing the shooting star
+         shootingStar.draw(ctx);
+    }
+    
+    // Random event to launch the drawing of a supernova
+    if (Math.random() <= 0.005 && supernova.livingTime == 0) {
+
+        // Set the living time of the supernova
+        supernova.livingTime = supernovaLivingTime;
+
+        // Reposition the spawnpoint of the supernova everytime a "new" one gets drawn
+        supernova.x = Math.floor(Math.random() * canvas.width);
+        supernova.y = Math.floor(Math.random() * canvas.height);
+    }
+
+    // If the random event above took place a supernova gets drawn
+    if(supernova.livingTime > 0) {
+
+        // Drawing the supernova
+        supernova.draw(ctx);
+    }
+
     // For every planet in the array, we gona draw the planet
     planets.forEach(planet => {
-        planet.draw(ctx);
+        planet.draw(ctx, actualTime);
     });
 
     // Next tick

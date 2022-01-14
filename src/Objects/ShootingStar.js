@@ -17,8 +17,7 @@ class ShootingStar {
       this.x = Math.floor(Math.random() * canvas.width);
       this.y = Math.floor(Math.random() * canvas.height);
       
-      // Counter for the living time
-      this.ticker = 0;
+      // Integer for the living time which is on 0 per default
       this.livingTime = livingTime;
     }
 
@@ -38,8 +37,8 @@ class ShootingStar {
           this.x += 1;
           this.y += 1;
 
-         // Decrease living time
-         this.livingTime--;
+          // Decrease living time
+          this.livingTime--;
         }
         ctx.fill();
         ctx.closePath();
