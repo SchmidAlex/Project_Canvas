@@ -40,7 +40,7 @@ class Planet {
      * @param mouseDownPoint X coords, when the user pressed the left mouse button
      * @param mouseUpPoint X coords, when the user left the left mouse button
      */
-    setInterreactionVelocity(mouseDownPoint, mouseUpPoint){
+    setInterreactionVelocity(mouseDownPoint, mouseUpPoint, mouseTimeDown, mouseTimeUp){
       console.log(mouseUpPoint / mouseDownPoint / 10);
       this.interreactionVelocity = mouseUpPoint / mouseDownPoint / 10;
     }
@@ -54,6 +54,7 @@ class Planet {
       if (actualActionTime > setActionTime) {
         if (this.interreactionVelocity > 0) {
           this.currentVelocity = this.defaultVelocity * this.interreactionVelocity;
+          this.interreactionVelocity = 0;
         } else if (this.onHold) {
           this.currentVelocity = 0;
         }
