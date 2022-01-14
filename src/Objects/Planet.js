@@ -69,10 +69,13 @@ class Planet {
             this.interreactionVelocity = 0;
           } else {
             this.currentVelocity = this.defaultVelocity * this.interreactionVelocity;
-            console.log('sinep');
-            this.interreactionVelocity = this.defaultVelocity;
-            this.slowDownOrSpeedUp = true;
-            this.destinationTimeSpeed = Math.floor(actualActionTime + this.setActionTime * 1000);
+            let tempThis = this;
+            setTimeout(function(){
+              tempThis.interreactionVelocity = tempThis.defaultVelocity;
+              tempThis.slowDownOrSpeedUp = true;
+              tempThis.destinationTimeSpeed = Math.floor(actualActionTime + tempThis.setActionTime * 1000);
+            }, this.setActionTime * 1000);
+
           }
         } else if (this.onHold) {
           this.currentVelocity = 0;
