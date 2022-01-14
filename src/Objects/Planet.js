@@ -69,12 +69,15 @@ class Planet {
             this.interreactionVelocity = 0;
           } else {
             this.currentVelocity = this.defaultVelocity * this.interreactionVelocity;
+            console.log('sinep');
             this.interreactionVelocity = this.defaultVelocity;
             this.slowDownOrSpeedUp = true;
             this.destinationTimeSpeed = Math.floor(actualActionTime + this.setActionTime * 1000);
           }
         } else if (this.onHold) {
           this.currentVelocity = 0;
+        } else {
+          this.currentVelocity = this.defaultVelocity;
         }
       } else {
         if (this.interreactionVelocity > 1 && this.currentVelocity < this.defaultVelocity * this.interreactionVelocity) {
@@ -87,6 +90,9 @@ class Planet {
           if (this.currentVelocity > this.defaultVelocity) {
             this.currentVelocity = this.defaultVelocity;
           } else {
+            if (this.currentVelocity === 0){
+              this.currentVelocity = this.defaultVelocity / 10;
+            }
             this.currentVelocity = this.currentVelocity * 1.01;
           }
         } else if (this.interreactionVelocity == this.defaultVelocity && this.currentVelocity > this.defaultVelocity) {
