@@ -12,6 +12,7 @@ window.addEventListener('DOMContentLoaded', function(e) {
         var starColor = '#fff';
         var asteroidSize = 10;
         var asteroidColor = "#964B00";
+        const asteroidLivingTime = false;
         var shootingStarSize = 5;
         var shootingStarColor = '#fff';
         const initialShootingStarLivingTime = 0;
@@ -26,7 +27,7 @@ window.addEventListener('DOMContentLoaded', function(e) {
         let canvas = document.getElementById('myCanvas');
         let ctx = canvas.getContext('2d');
         var sun = new Sun(20, canvas); //size anpassen
-        var asteroid = new Asteroid(asteroidSize, 10, canvas, asteroidColor);
+        var asteroid = new Asteroid(asteroidSize, 10, asteroidColor, asteroidLivingTime);
         var shootingStar = new ShootingStar(shootingStarSize, 10, shootingStarColor, canvas, initialShootingStarLivingTime);
         var supernova = new Supernova(supernovaSize, supernovaColor, canvas, initialSupernovaLivingTime);
         /**
@@ -117,11 +118,22 @@ function showFrame(canvas, ctx, sun, planets, stars, starColor, actualTime, aste
     });
 
     // Drawing the sun
-    sun.draw(ctx);
+    sun.draw(ctx);    
 
-    // Drawing the asteroid
-    asteroid.draw(ctx);
+    // Random event to launch the drawing of a asteroid
+    if (Math.random() <= 0.005 && !asteroid.livingTime) {
 
+        // Reposition the spawnpoint of the asteroid everytime a "new" one gets drawn
+        asteroid.changeSides(canvas);
+        
+        asteroid.livingTime = true;
+    }
+
+    if(asteroid.livingTime) {
+
+        // Drawing the asteroid
+        asteroid.draw(ctx, canvas);
+    }
     
     // Random event to launch the drawing of a shooting star
     if (Math.random() <= 0.009 && shootingStar.livingTime == 0) {

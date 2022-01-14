@@ -7,50 +7,64 @@ class Asteroid {
      * @param {Canvas object} canvas 
      * @param {Color of the asteroid} color 
      */
-    constructor(size, velocity, canvas, color) {
+    constructor(size, velocity, color, livingTime) {
       this.size = size;
       this.velocity = velocity;
       this.color = color;
+      this.livingTime = livingTime;
+      this.x;
+      this.y;
 
       // Choose random one of four sides for the asteriod to appear
+      
+    }
+
+    changeSides(canvas) {
+
       this.side = Math.floor(Math.random() * 4)
       switch (this.side) {
         // Asteroid spawns on top border
         case 0:
           this.x = Math.floor(Math.random() * canvas.width);
-          this.y = 0 - this.size;
+          this.y = 10;
           break;
         
         // Asteroid spawns on left border
         case 1:
-          this.x = 0 - this.size;
+          this.x = 10;
           this.y = Math.floor(Math.random() * canvas.height);
           break;
 
         // Asteroid spawns on right border
         case 2:
-          this.x = canvas.width + - this.size
+          this.x = canvas.width - 10;
           this.y = Math.floor(Math.random() * canvas.height);
           break;
 
-        // Asteroid spawns on right border
+        // Asteroid spawns on bottom border
         case 3:
           this.x = Math.floor(Math.random() * canvas.width);
-          this.y = canvas.height +- this.size;
+          this.y = canvas.height - 10;
           break;
       }
     }
 
-    draw(ctx) {
+    draw(ctx, canvas) {
 
         // Set color based on parameter given when initialising asteroid class
         ctx.fillStyle = this.color;
         ctx.beginPath();
 
-        //if(this.x < canvas.width && this.y < canvas.height) {
+        //testing here
+        if(this.livingTime == true) {
           // Draw asteroid
           ctx.arc(this.x, this.y, this.size, 0, 2 * Math.PI, false);
-        //}
+          
+          if((this.x >= canvas.width + 5 || this.y >= canvas.height + 5) || (this.x < -5 || this.y < -5)) {
+            this.livingTime = false;
+            console.log('penis');
+          }
+        }
         
         // Check side to move asteroid in the screen not outside
         switch (this.side) {
