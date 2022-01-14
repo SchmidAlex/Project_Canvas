@@ -17,6 +17,7 @@ window.addEventListener('DOMContentLoaded', function(e) {
         var shootingStarLivingTime = 150;
         var supernovaSize = 15;
         var supernovaColor = '#ff0000';
+        var supernovaLivingTime = 150;
 
         /**
          * Make all objects we need
@@ -27,7 +28,7 @@ window.addEventListener('DOMContentLoaded', function(e) {
         var sun = new Sun(20, canvas); //size anpassen
         var asteroid = new Asteroid(asteroidSize, 10, canvas, asteroidColor);
         var shootingStar = new ShootingStar(shootingStarSize, 10, shootingStarColor, canvas, shootingStarLivingTime);
-        var supernova = new Supernova(supernovaSize, supernovaColor, canvas);
+        var supernova = new Supernova(supernovaSize, supernovaColor, canvas, supernovaLivingTime);
         /**
          * Create objects we need
          */
@@ -52,14 +53,17 @@ window.addEventListener('DOMContentLoaded', function(e) {
          */
         var mouseDownPoint;
         var mouseUpPoint;
+        var mouseTimeDown;
+        var mouseTimeUp
 
         /**
          * Eventhandler for clicking in the canvas
          */
         document.getElementById('myCanvas').addEventListener('mousedown', function (e) {
+            mouseDownPoint = e.clientX;
+            mouseTimeDown = e.timeStamp;
             planets.forEach(planet => {
                 planet.setOnHold();
-                mouseDownPoint = e.clientX;
             });
         });
     
@@ -67,10 +71,13 @@ window.addEventListener('DOMContentLoaded', function(e) {
          * Eventhandler for let go of the click
          */
         document.getElementById('myCanvas').addEventListener('mouseup', function (e) {
+            mouseUpPoint = e.clientX;
+            mouseTimeUp = e.timeStamp;
+            console.log(mouseTimeDown);
+            console.log(mouseTimeUp);
             planets.forEach(planet => {
                 planet.breakOnHold();
-                mouseUpPoint = e.clientX;
-                planet.setInterreactionVelocity(mouseDownPoint, mouseUpPoint);
+                planet.setInterreactionVelocity(mouseDownPoint, mouseUpPoint, mouseTimeDown, mouseTimeUp);
             });
         });
 
